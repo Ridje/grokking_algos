@@ -6,8 +6,7 @@ class QSort {
             return array
         }
         val pivot = array[Random.nextInt(0, array.size)]
-        val less = array.filter { it < pivot }.toIntArray()
-        val greater = array.filter { it > pivot }.toIntArray()
-        return qSort(less) + pivot + qSort(greater)
+        val (less, great) = array.partition { it < pivot }
+        return qSort(less.toIntArray()) + qSort(great.toIntArray())
     }
 }
